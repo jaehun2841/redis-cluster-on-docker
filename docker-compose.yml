@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+
+  redis-master:
+     image: redis:4.0.8-alpine
+     port:
+      - "6379:6379"
+  redis-slave1:
+     image: redis:4.0.8-alpine
+     port:
+      - "6380:6379"
+  redis-slave2:
+     image: redis:4.0.8-alpine
+     port:
+      - "6381:6379"
+  redis-sentinel1:
+     image: redis:4.0.8-alpine
+  redis-sentinel2:
+     image: redis:4.0.8-alpine
+  redis-sentinel3:
+     image: redis:4.0.8-alpine
