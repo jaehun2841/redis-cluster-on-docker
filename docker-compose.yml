@@ -1,22 +1,29 @@
-version: '2'
-
+version: '3'
 services:
 
   redis-master:
      image: redis:4.0.8-alpine
-     port:
+     build: .
+     ports:
       - "6379:6379"
-  redis-slave1:
-     image: redis:4.0.8-alpine
-     port:
-      - "6380:6379"
-  redis-slave2:
-     image: redis:4.0.8-alpine
-     port:
-      - "6381:6379"
-  redis-sentinel1:
-     image: redis:4.0.8-alpine
-  redis-sentinel2:
-     image: redis:4.0.8-alpine
-  redis-sentinel3:
-     image: redis:4.0.8-alpine
+     volumes:
+      - "./redis-data/data/master:/data"
+  #redis-slave1:
+  #   image: redis:4.0.8-alpine
+  #   ports:
+  #    - "6380:6379"
+  #   volumes:
+  #    - "./redis-data/data/slave1:/data"
+  #redis-slave2:
+  #   image: redis:4.0.8-alpine
+  #   ports:
+  #    - "6381:6379"
+  #   volumes:
+  #    - "./redis-data/data/slave2:/data"
+
+ # redis-sentinel1:
+ #    image: redis:4.0.8-alpine
+ # redis-sentinel2:
+ #    image: redis:4.0.8-alpine
+ # redis-sentinel3:
+ #    image: redis:4.0.8-alpine
