@@ -6,14 +6,13 @@ services:
      build: .
      network_mode: "host"
      environment:
-      - APPENDFSYNC=everysec
       - REQUIREPASS=1234
       - CLIENTPORT=6379
       - CLIENTHOST=127.0.0.1
       - MASTERHOST=
       - MASTERPORT=
      volumes:
-      - "./redis-data/data/master:/data"
+      - "./redis-data/master:/data"
      restart: always
       
   redis-slave1:
@@ -21,14 +20,13 @@ services:
      build: .
      network_mode: "host"
      environment:
-      - APPENDFSYNC=everysec
       - REQUIREPASS=1234
       - CLIENTHOST=127.0.0.1
       - CLIENTPORT=6380
       - MASTERHOST=127.0.0.1
       - MASTERPORT=6379
      volumes:
-      - "./redis-data/data/slave1:/data"
+      - "./redis-data/slave1:/data"
      restart: always
       
   redis-slave2:
@@ -36,19 +34,12 @@ services:
      build: .
      network_mode: "host"
      environment:
-      - APPENDFSYNC=everysec
       - REQUIREPASS=1234
       - CLIENTHOST=127.0.0.1
       - CLIENTPORT=6381
       - MASTERHOST=127.0.0.1
       - MASTERPORT=6379
-     volumes:
-      - "./redis-data/data/slave1:/data"
+     #volumes:
+     # - "./redis-data/slave2:/data"
      restart: always
 
- # redis-sentinel1:
- #    image: redis:4.0.8-alpine
- # redis-sentinel2:
- #    image: redis:4.0.8-alpine
- # redis-sentinel3:
- #    image: redis:4.0.8-alpine
