@@ -39,7 +39,7 @@ services:
       - CLIENTPORT=6381
       - MASTERHOST=127.0.0.1
       - MASTERPORT=6379
-     #volumes:
-     # - "./redis-data/slave2:/data"
+     volumes:
+      - "./redis-data/slave2:/data"
      restart: always
 
