@@ -3,7 +3,9 @@ services:
 
   redis-master:
      image: redis:4.0.8-alpine
-     build: ../Dockerfile
+     build:
+      context: ..
+      dockerfile: Dockerfile
      network_mode: "host"
      environment:
       - REQUIREPASS=1234
@@ -17,7 +19,9 @@ services:
       
   redis-slave1:
      image: redis:4.0.8-alpine
-     build: ../Dockerfile
+     build: 
+      context: ..
+      dockerfile: Dockerfile
      network_mode: "host"
      environment:
       - REQUIREPASS=1234
@@ -31,7 +35,9 @@ services:
       
   redis-slave2:
      image: redis:4.0.8-alpine
-     build: ../Dockerfile
+     build: 
+      context: ..
+      dockerfile: Dockerfile
      network_mode: "host"
      environment:
       - REQUIREPASS=1234
