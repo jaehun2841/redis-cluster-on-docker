@@ -1,14 +1,14 @@
 #!/bin/sh
 set -e
 
-## from redis-3.2
-sed -i "s/bind 127.0.0.1/bind $CLIENTHOST/g" /usr/local/bin/redis.conf
+## from redis-5
+sed -i "s/bind 127.0.0.1/bind $CLIENTHOST 127.0.0.1/g" /usr/local/bin/redis.conf
 #
 ### redis port inside redis.conf
 sed -i "s/port 6379/port $CLIENTPORT/g" /usr/local/bin/redis.conf
 sed -i "s/# requirepass foobared/requirepass $REQUIREPASS/g" /usr/local/bin/redis.conf
 sed -i "s/# masterauth <master-password>/masterauth $REQUIREPASS/g" /usr/local/bin/redis.conf
-#
+
 ### slaveof <masterip> <masterport> => slaveof $MASTERHOST $MASTERPORT
 if [ "$MASTERPORT" != "" ];then
 	sed -i "s/# slaveof <masterip> <masterport>/slaveof $MASTERHOST $MASTERPORT/g" /usr/local/bin/redis.conf

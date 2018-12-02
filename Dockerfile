@@ -1,4 +1,4 @@
-FROM redis:4.0.8-alpine
+FROM redis:5.0-alpine
 
 MAINTAINER Carrey (jaehun.lee@ticketlink.co.kr)
 
