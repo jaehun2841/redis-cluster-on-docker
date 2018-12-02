@@ -10,9 +10,9 @@ services:
     environment:
       - REQUIREPASS=password1234
       - CLIENTPORT=6379
+      - MASTERPORT=
       - CLIENTHOST=192.168.137.101
       - MASTERHOST=
-      - MASTERPORT=
     volumes:
       - "../../redis-data/redis1:/data"
     restart: always
@@ -24,11 +24,11 @@ services:
       dockerfile: Dockerfile
     network_mode: "host"
     environment:
-        - REQUIREPASS=password1234
-        - CLIENTPORT=6380
-        - CLIENTHOST=192.168.137.101
-        - MASTERHOST=6379
-        - MASTERPORT=192.168.137.101
+      - REQUIREPASS=password1234
+      - CLIENTPORT=6380
+      - MASTERPORT=6379
+      - CLIENTHOST=192.168.137.101
+      - MASTERHOST=192.168.137.101
     volumes:
       - "../../redis-data/redis2:/data"
     restart: always
@@ -42,9 +42,9 @@ services:
     environment:
       - REQUIREPASS=password1234
       - CLIENTPORT=6381
+      - MASTERPORT=6379
       - CLIENTHOST=192.168.137.101
-      - MASTERHOST=6379
-      - MASTERPORT=192.168.137.101
+      - MASTERHOST=192.168.137.101
     volumes:
       - "../../redis-data/redis3:/data"
     restart: always
